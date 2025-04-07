@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Nomes Piratas | Crie Nomes Autênticos para Navios</title>
+    <meta name="description" content="Gerador divertido de nomes para navios piratas. Crie combinações únicas como 'O Dragão Escarlate' e compartilhe com amigos!">
+    <meta name="keywords" content="nome pirata, gerador de nomes, navio pirata, nomes criativos">
+    
+    <!-- Meta tags para redes sociais -->
+    <meta property="og:title" content="Gerador de Nomes Piratas - Crie Nomes Autênticos">
+    <meta property="og:description" content="Gere nomes incríveis para seu navio pirata e compartilhe nas redes sociais!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://exemplo.com/gerador-pirata">
+    <meta property="og:image" content="https://exemplo.com/pirata-thumbnail.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1995/1995488.png" type="image/png">
+    
+    <!-- Pré-carregamento de recursos -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@400;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@400;700&display=swap">
+    
+    <style>
+        :root {
+            --cor-primaria: #8b4513;
+            --cor-secundaria: #a52a2a;
+            --cor-texto: #3d2b1f;
+            --cor-fundo: #f5f5dc;
+            --cor-destaque: #d4af37;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://img.freepik.com/free-vector/vintage-paper-texture_1048-10911.jpg') no-repeat center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: var(--cor-texto);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.93);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid var(--cor-primaria);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            opacity: 0.3;
+            pointer-events: none;
+            border-radius: 12px;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--cor-secundaria);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        #shipName {
+            font-size: 2.2rem;
+            color: var(--cor-secundaria);
+            margin: 1.5rem 0;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            border: 2px dashed var(--cor-primaria);
+            transition: all 0.5s ease;
+            min-height: 4rem;
+        }
+        
+        .language-selector {
+            display: block;
+            margin: 1rem auto;
+            padding: 0.5rem 0.75rem;
+            border-radius: 5px;
+            border: 2px solid var(--cor-primaria);
+            background: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        .pirate-info {
+            background: rgba(255,255,255,0.85);
+            border-left: 4px solid var(--cor-secundaria);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pirate-info h3 {
+            color: var(--cor-primaria);
+            margin-top: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .pirate-info a {
+            color: var(--cor-secundaria);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .pirate-info a:hover {
+            color: var(--cor-primaria);
+            text-decoration: underline;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        button {
+            background: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.75rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 160px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background: var(--cor-secundaria);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Estilos do Quiz */
+        .quiz-button {
+            background: #5a2d0c !important;
+            margin-top: 1rem;
+        }
+        
+        .quiz-container {
+            max-width: 600px;
+            margin: 1.5rem auto;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .quiz-step {
+            text-align: left;
+        }
+        
+        .quiz-step button {
+            display: block;
+            width: 100%;
+            margin: 0.5rem 0;
+            text-align: left;
+        }
+        
+        .pirate-name {
+            font-size: 2rem;
+            color: var(--cor-secundaria);
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        /* Rodapé */
+        footer {
+            background: #2c1a0d;
+            color: #f5f5dc;
+            padding: 2rem 0 1rem;
+            margin-top: 3rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 1.25rem;
+            gap: 2rem;
+        }
+        
+        .dev-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .dev-info h3 {
+            color: var(--cor-destaque);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+        
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-links img {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .contact-form h3 {
+            color: var(--cor-destaque);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 2px solid var(--cor-primaria);
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #5a2d0c;
+            font-size: 0.9rem;
+        }
+        
+        /* Widget de Acessibilidade */
+        #accessibility-treasure {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        #accessibility-treasure button {
+            background: var(--cor-primaria);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        /* Status do Formulário */
+        .form-status {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .form-status.error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .form-status.success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem auto;
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            #shipName {
+                font-size: 1.8rem;
+                padding: 1rem;
+            }
+            
+            button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+                min-width: 140px;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            #shipName {
+                font-size: 1.5rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+        
+        /* Acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        :focus {
+            outline: 3px solid var(--cor-destaque);
+            outline-offset: 2px;
+        }
+        
+        .high-contrast {
+            background: #000 !important;
+            color: #FF0 !important;
+            border-color: #FFF !important;
+        }
+        
+        .high-contrast button {
+            background: #000 !important;
+            color: #FF0 !important;
+            border: 2px solid #FF0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚓ Gerador de Nomes Piratas</h1>
+        
+        <select id="language" class="language-selector" aria-label="Selecione o idioma">
+            <option value="pt">🇧🇷 Português</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+        </select>
+        
+        <div id="shipName" class="fade-in" aria-live="polite">"O Tesouro Perdido"</div>
+        
+        <div class="pirate-info" id="infoContainer" aria-live="polite">
+            <!-- Conteúdo será preenchido pelo JavaScript -->
+        </div>
+        
+        <div class="buttons">
+            <button id="generateBtn" aria-label="Gerar novo nome pirata">
+                <span>🎲</span> <span class="button-text">Gerar Nome</span>
+            </button>
+            <button id="downloadBtn" aria-label="Baixar imagem com o nome gerado">
+                <span>💾</span> <span class="button-text">Baixar</span>
+            </button>
+            <button id="shareBtn" aria-label="Compartilhar nome gerado">
+                <span>📢</span> <span class="button-text">Compartilhar</span>
+            </button>
+        </div>
+        
+        <button id="quizBtn" class="quiz-button" aria-label="Responder quiz para nome personalizado">
+            <span>🔮</span> <span class="button-text">Descubra seu nome pirata!</span>
+        </button>
+    </div>
+
+    <div id="quizContainer" class="quiz-container" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+        <h2 id="quizTitle">Quiz do Pirata</h2>
+        <div id="quizProgress" aria-live="polite"></div>
+        
+        <div id="quizStep1" class="quiz-step">
+            <h3>1. Qual sua arma preferida?</h3>
+            <button data-answer="aggressive" aria-label="Espada">⚔️ Espada</button>
+            <button data-answer="strategic" aria-label="Arco">🏹 Arco</button>
+            <button data-answer="mysterious" aria-label="Poções">🔮 Poções</button>
+        </div>
+        
+        <div id="quizResult" style="display:none;">
+            <h3>Seu nome pirata é:</h3>
+            <div id="quizNameResult" class="pirate-name" aria-live="assertive"></div>
+            <button id="useQuizName">Usar este nome</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="contact-container">
+            <div class="dev-info">
+                <h3>Desenvolvido por <span id="devName">Marcelo Vitória</span></h3>
+                <p>Criador do Gerador de Nomes Piratas</p>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/+5527999961775" target="_blank" class="whatsapp" aria-label="WhatsApp">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp" width="32" height="32">
+                    </a>
+                    <a href="mailto:firstmsv40@gmail.com" class="email" aria-label="E-mail">
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="E-mail" width="32" height="32">
+                    </a>
+                    <a href="https://linkedin.com/in/marcelo-vitoria-desenvolvedor" target="_blank" class="linkedin" aria-label="LinkedIn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn" width="32" height="32">
+                    </a>
+                    <a href="https://github.com/firstmsv" target="_blank" class="social-icon" aria-label="GitHub">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="32" height="32">
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Envie uma mensagem</h3>
+                <form id="contactForm" action="https://formsubmit.co/firstmsv40@email.com" method="POST">
+                    <!-- Campo oculto para assunto do email -->
+                    <input type="hidden" name="_subject" value="Novo contato do Nomes Piratas">
+                    
+                    <!-- Evita captchas/bots -->
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <!-- Desabilita captcha do FormSubmit -->
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <!-- Redirecionamento após envio -->
+                    <input type="hidden" name="_next" value="https://www.nomespiratas.com.br/obrigado.html">
+                    
+                    <div class="form-group">
+                        <label for="name" class="sr-only">Seu nome</label>
+                        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Seu e-mail</label>
+                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="sr-only">Sua mensagem</label>
+                        <textarea id="message" name="message" placeholder="Sua mensagem..." required minlength="10"></textarea>
+                    </div>
+                    
+                    <div id="formStatus" class="form-status" role="alert" aria-live="assertive"></div>
+                    
+                    <button type="submit">
+                        <span class="button-text">Enviar</span>
+                        <span class="loading-spinner" aria-hidden="true"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; <span id="currentYear"></span> Todos os direitos reservados
+        </div>
+    </footer>
+
+    <!-- Widget de Acessibilidade -->
+    <div id="accessibility-treasure">
+        <button onclick="initVLibras()" aria-label="Ativar intérprete de Libras">
+            🏴‍☠️👐
+        </button>
+        <button onclick="readAloud()" aria-label="Ouvir conteúdo da página">
+            🔊⚓
+        </button>
+        <button onclick="toggleHighContrast()" aria-label="Alternar alto contraste">
+            🌓
+        </button>
+    </div>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Dados de nomes por idioma
+        const namesData = {
+            pt: {
+                adjectives: ["Sanguinário", "Negro", "Dourado", "Traidor", "Vingativo", "Escarlate", "Tempestuoso", "Fantasma"],
+                nouns: ["Dragão", "Serpente", "Corsário", "Maldição", "Trovão", "Ladrão", "Vingança", "Caveira"],
+                prefixes: ["O", "A", "O Grande", "O Terrível", "O Infame"]
+            },
+            en: {
+                adjectives: ["Bloody", "Black", "Golden", "Treacherous", "Vengeful", "Scarlet", "Stormy", "Phantom"],
+                nouns: ["Dragon", "Serpent", "Corsair", "Curse", "Thunder", "Thief", "Revenge", "Skull"],
+                prefixes: ["The", "The Great", "The Dreadful", "The Infamous"]
+            },
+            es: {
+                adjectives: ["Sanguinario", "Negro", "Dorado", "Traidor", "Vengativo", "Escarlata", "Tempestuoso", "Fantasma"],
+                nouns: ["Dragón", "Serpiente", "Corsario", "Maldición", "Trueno", "Ladrón", "Venganza", "Calavera"],
+                prefixes: ["El", "La", "El Gran", "El Temible"]
+            },
+            fr: {
+                adjectives: ["Sanguinaire", "Noir", "Doré", "Traître", "Vengeur", "Écarlate", "Orageux", "Fantôme"],
+                nouns: ["Dragon", "Serpent", "Corsaire", "Malédiction", "Tonnerre", "Voleur", "Vengeance", "Crâne"],
+                prefixes: ["Le", "La", "Le Grand", "Le Terrible"]
+            },
+            de: {
+                adjectives: ["Blutrünstig", "Schwarz", "Goldig", "Veräterisch", "Rachsüchtig", "Scharlachrot", "Stürmisch", "Phantom"],
+                nouns: ["Drache", "Schlange", "Korsar", "Fluch", "Donner", "Dieb", "Rache", "Schädel"],
+                prefixes: ["Der", "Die", "Der Große", "Der Schreckliche"]
+            }
+        };
+
+        // Textos traduzidos
+        const translations = {
+            pt: {
+                title: "Gerador de Nomes Piratas",
+                generate: "Gerar Nome",
+                download: "Baixar",
+                share: "Compartilhar",
+                quizTitle: "Quiz do Pirata",
+                quizButton: "Descubra seu nome pirata!",
+                quizQuestion1: "1. Qual sua arma preferida?",
+                quizAnswer1: ["⚔️ Espada", "🏹 Arco", "🔮 Poções"],
+                formSubmit: "Enviar",
+                formSuccess: "Mensagem enviada com sucesso!",
+                formError: "Erro ao enviar mensagem. Tente novamente.",
+                info: `
+                    <h3>Piratas</h3>
+                    <p>Os piratas são guerreiros destemidos que atacam navios em busca de ouro e aventura! Na ficção são carismáticos, mas na história foram cruéis.</p>
+                    
+                    <h3>Nomes de Piratas</h3>
+                    <p>Todo pirata lendário tinha um apelido marcante. Barba Negra, por exemplo, era mais famoso que seu nome real (Edward Teach).</p>
+                    
+                    <h3>Como usar</h3>
+                    <p>Clique em "Gerar Nome" para criar um nome aleatório. Use o quiz para um nome personalizado!</p>
+                    
+                    <h3>Dica</h3>
+                    <p>Você pode baixar ou compartilhar seu nome pirata favorito!</p>
+                `
+            },
+            en: {
+                title: "Pirate Name Generator",
+                generate: "Generate Name",
+                download: "Download",
+                share: "Share",
+                quizTitle: "Pirate Quiz",
+                quizButton: "Discover your pirate name!",
+                quizQuestion1: "1. What's your preferred weapon?",
+                quizAnswer1: ["⚔️ Sword", "🏹 Bow", "🔮 Potions"],
+                formSubmit: "Submit",
+                formSuccess: "Message sent successfully!",
+                formError: "Error sending message. Please try again.",
+                info: `
+                    <h3>Pirates</h3>
+                    <p>Pirates were fearless warriors who attacked ships for gold and adventure! Romanticized in fiction but often cruel in history.</p>
+                    
+                    <h3>Pirate Names</h3>
+                    <p>Every legendary pirate had a striking nickname. Blackbeard was more famous than his real name (Edward Teach).</p>
+                    
+                    <h3>How to use</h3>
+                    <p>Click "Generate Name" to create a random name. Try the quiz for a personalized name!</p>
+                    
+                    <h3>Tip</h3>
+                    <p>You can download or share your favorite pirate name!</p>
+                `
+            },
+            es: {
+                title: "Generador de Nombres Piratas",
+                generate: "Generar Nombre",
+                download: "Descargar",
+                share: "Compartir",
+                quizTitle: "Quiz Pirata",
+                quizButton: "¡Descubre tu nombre pirata!",
+                quizQuestion1: "1. ¿Cuál es tu arma preferida?",
+                quizAnswer1: ["⚔️ Espada", "🏹 Arco", "🔮 Pociones"],
+                formSubmit: "Enviar",
+                formSuccess: "¡Mensaje enviado con éxito!",
+                formError: "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+                info: `
+                    <h3>Piratas</h3>
+                    <p>¡Los piratas eran guerreros audaces que atacaban barcos en busca de oro y aventura! Romantizados en la ficción pero a menudo crueles.</p>
+                    
+                    <h3>Nombres Piratas</h3>
+                    <p>Cada pirata legendario tenía un apodo llamativo. Barbanegra era más famoso que su nombre real (Edward Teach).</p>
+                    
+                    <h3>Cómo usar</h3>
+                    <p>Haz clic en "Generar Nombre" para crear un nombre aleatorio. ¡Prueba el quiz para un nombre personalizado!</p>
+                    
+                    <h3>Consejo</h3>
+                    <p>¡Puedes descargar o compartir tu nombre pirata favorito!</p>
+                `
+            },
+            fr: {
+                title: "Générateur de Noms Pirates",
+                generate: "Générer un Nom",
+                download: "Télécharger",
+                share: "Partager",
+                quizTitle: "Quiz Pirate",
+                quizButton: "Découvrez votre nom de pirate!",
+                quizQuestion1: "1. Quelle est votre arme préférée?",
+                quizAnswer1: ["⚔️ Épée", "🏹 Arc", "🔮 Potions"],
+                formSubmit: "Envoyer",
+                formSuccess: "Message envoyé avec succès!",
+                formError: "Erreur lors de l'envoi du message. Veuillez réessayer.",
+                info: `
+                    <h3>Pirates</h3>
+                    <p>Les pirates étaient des guerriers intrépides qui attaquaient les navires pour l'or et l'aventure ! Romancés dans la fiction mais souvent cruels.</p>
+                    
+                    <h3>Noms de Pirates</h3>
+                    <p>Chaque pirate légendaire avait un surnom frappant. Barbe Noire était plus célèbre que son vrai nom (Edward Teach).</p>
+                    
+                    <h3>Comment utiliser</h3>
+                    <p>Cliquez sur "Générer un Nom" pour créer un nom aléatoire. Essayez le quiz pour un nom personnalisé !</p>
+                    
+                    <h3>Astuce</h3>
+                    <p>Vous pouvez télécharger ou partager votre nom de pirate préféré !</p>
+                `
+            },
+            de: {
+                title: "Piraten Namen Generator",
+                generate: "Namen generieren",
+                download: "Herunterladen",
+                share: "Teilen",
+                quizTitle: "Piraten Quiz",
+                quizButton: "Entdecke deinen Piratennamen!",
+                quizQuestion1: "1. Was ist deine bevorzugte Waffe?",
+                quizAnswer1: ["⚔️ Schwert", "🏹 Bogen", "🔮 Tränke"],
+                formSubmit: "Senden",
+                formSuccess: "Nachricht erfolgreich gesendet!",
+                formError: "Fehler beim Senden der Nachricht. Bitte versuche es erneut.",
+                info: `
+                    <h3>Piraten</h3>
+                    <p>Piraten waren furchtlose Krieger, die Schiffe für Gold und Abenteuer angriffen! In der Fiktion romantisiert, aber oft grausam.</p>
+                    
+                    <h3>Piraten Namen</h3>
+                    <p>Jeder legendäre Pirat hatte einen markanten Spitznamen. Blackbeard war berühmter als sein richtiger Name (Edward Teach).</p>
+                    
+                    <h3>Wie man verwendet</h3>
+                    <p>Klicken Sie auf "Namen generieren", um einen zufälligen Namen zu erstellen. Versuchen Sie das Quiz für einen personalisierten Namen!</p>
+                    
+                    <h3>Tipp</h3>
+                    <p>Sie können Ihren Lieblings-Piratennamen herunterladen oder teilen!</p>
+                `
+            }
+        };
+
+        // Elementos DOM
+        const shipNameEl = document.getElementById("shipName");
+        const generateBtn = document.getElementById("generateBtn");
+        const downloadBtn = document.getElementById("downloadBtn");
+        const shareBtn = document.getElementById("shareBtn");
+        const languageSelector = document.getElementById("language");
+        const infoContainer = document.getElementById("infoContainer");
+        const quizBtn = document.getElementById('quizBtn');
+        const quizContainer = document.getElementById('quizContainer');
+        const quizNameResult = document.getElementById('quizNameResult');
+        const useQuizNameBtn = document.getElementById('useQuizName');
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        
+        let currentLanguage = 'pt';
+        let currentName = '"O Tesouro Perdido"';
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar ano atual
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Carregar VLibras se disponível
+            if (typeof VLibras !== 'undefined') {
+                initVLibras();
+            } else {
+                // Carregar script VLibras dinamicamente
+                const script = document.createElement('script');
+                script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+                script.onload = initVLibras;
+                document.body.appendChild(script);
+            }
+            
+            // Configurar eventos
+            setupEventListeners();
+            
+            // Atualizar idioma inicial
+            updateLanguage();
+            
+            // Gerar primeiro nome
+            generateName();
+        });
+
+        function setupEventListeners() {
+            // Botões principais
+            generateBtn.addEventListener("click", generateName);
+            downloadBtn.addEventListener("click", downloadName);
+            shareBtn.addEventListener("click", shareName);
+            
+            // Seletor de idioma
+            languageSelector.addEventListener("change", updateLanguage);
+            
+            // Quiz
+            quizBtn.addEventListener('click', showQuiz);
+            document.querySelectorAll('#quizStep1 button').forEach(btn => {
+                btn.addEventListener('click', handleQuizAnswer);
+            });
+            useQuizNameBtn.addEventListener('click', useQuizResult);
+            
+            // Formulário de contato
+            contactForm.addEventListener('submit', handleFormSubmit);
+            
+            // Atalhos de teclado
+            document.addEventListener('keydown', handleKeyboardShortcuts);
+        }
+
+        // Gerar nome aleatório
+        function generateName() {
+            const langData = namesData[currentLanguage];
+            const randomAdj = langData.adjectives[Math.floor(Math.random() * langData.adjectives.length)];
+            const randomNoun = langData.nouns[Math.floor(Math.random() * langData.nouns.length)];
+            const randomPrefix = langData.prefixes[Math.floor(Math.random() * langData.prefixes.length)];
+            
+            // Padrão: "O [Adjetivo] [Substantivo]"
+            currentName = `"${randomPrefix} ${randomAdj} ${randomNoun}"`;
+            
+            // Animação de fade
+            shipNameEl.style.opacity = 0;
+            setTimeout(() => {
+                shipNameEl.textContent = currentName;
+                shipNameEl.style.opacity = 1;
+                shipNameEl.classList.add("fade-in");
+                
+                // Remover classe após animação
+                setTimeout(() => {
+                    shipNameEl.classList.remove("fade-in");
+                }, 800);
+            }, 300);
+        }
+
+        // Baixar imagem do nome
+        async function downloadName() {
+            try {
+                // Verificar se html2canvas está disponível
+                if (typeof html2canvas === 'undefined') {
+                    await loadHtml2Canvas();
+                }
+                
+                // Feedback visual
+                downloadBtn.disabled = true;
+                const originalText = downloadBtn.querySelector('.button-text').textContent;
+                downloadBtn.querySelector('.button-text').textContent = translations[currentLanguage].download + '...';
+                
+                // Capturar container como imagem
+                const canvas = await html2canvas(document.querySelector(".container"), {
+                    scale: 2,
+                    logging: false,
+                    useCORS: true,
+                    backgroundColor: null
+                });
+                
+                // Criar link de download
+                const link = document.createElement('a');
+                link.download = `${translations[currentLanguage].title} - ${currentName}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+            } catch (error) {
+                console.error("Erro ao baixar:", error);
+                showFormStatus(translations[currentLanguage].formError, 'error');
+            } finally {
+                // Restaurar botão
+                if (downloadBtn) {
+                    downloadBtn.disabled = false;
+                    downloadBtn.querySelector('.button-text').textContent = translations[currentLanguage].download;
+                }
+            }
+        }
+        </script>
+      </body>
+</html>    
+       
