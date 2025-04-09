@@ -424,3 +424,27 @@ body {
     text-decoration: underline;
     color: var(--cor-secundaria);
 }
+.pirate-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.pirate-menu li {
+    margin: 15px 0;
+}
+
+.pirate-menu a {
+    display: block;
+    padding: 12px;
+    background-color: #8b4513;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.pirate-menu a:hover {
+    background-color: #a52a2a;
+    transform: translateY(-3px);
+}
