@@ -530,29 +530,42 @@
                     <!-- Desabilita captcha do FormSubmit -->
                     <input type="hidden" name="_captcha" value="false">
                     
-                    <!-- Redirecionamento após envio -->
-                    <input type="hidden" name="_next" value="https://www.nomespiratas.com.br/obrigado.html">
-                    
-                    <div class="form-group">
-                        <label for="name" class="sr-only">Seu nome</label>
-                        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                    <div class="contact-form">
+                        <h3>Envie uma mensagem</h3>
+                        <form id="contactForm" action="https://formsubmit.co/firstmsv40@email.com" method="POST">
+                            <!-- Campo oculto para assunto do email -->
+                            <input type="hidden" name="_subject" value="Novo contato do Nomes Piratas">
+                            
+                            <!-- Evita captchas/bots -->
+                            <input type="text" name="_honey" style="display:none">
+                            
+                            <!-- Desabilita captcha do FormSubmit -->
+                            <input type="hidden" name="_captcha" value="false">
+                            
+                            <!-- Redirecionamento após envio -->
+                            <input type="hidden" name="_next" value="https://firstmsv.github.io/gerador-pirata/obrigado.html">
+                            
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Seu nome</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Seu e-mail</label>
+                                <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="sr-only">Sua mensagem</label>
+                                <textarea id="message" name="message" placeholder="Sua mensagem..." required minlength="10"></textarea>
+                            </div>
+                            
+                            <button type="submit">
+                                <span class="button-text">Enviar</span>
+                            </button>
+                        </form>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="sr-only">Seu e-mail</label>
-                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="sr-only">Sua mensagem</label>
-                        <textarea id="message" name="message" placeholder="Sua mensagem..." required minlength="10"></textarea>
-                    </div>
-                    
-                    <div id="formStatus" class="form-status" role="alert" aria-live="assertive"></div>
-                    
-                    <button type="submit">
-                        <span class="button-text">Enviar</span>
-                        <span class="loading-spinner" aria-hidden="true"></span>
+                    <span class="loading-spinner" aria-hidden="true"></span>
                     </button>
                 </form>
             </div>
@@ -562,7 +575,7 @@
             &copy; <span id="currentYear"></span> Todos os direitos reservados
         </div>
     </footer>
-
+        
     <!-- Widget de Acessibilidade -->
     <div id="accessibility-treasure">
         <button onclick="initVLibras()" aria-label="Ativar intérprete de Libras">
@@ -586,7 +599,7 @@
 
     <!-- JavaScript -->
     <script>
-        // Dados de nomes por idioma
+        // Dados e configurações
         const namesData = {
             pt: {
                 adjectives: ["Sanguinário", "Negro", "Dourado", "Traidor", "Vingativo", "Escarlate", "Tempestuoso", "Fantasma"],
@@ -614,270 +627,154 @@
                 prefixes: ["Der", "Die", "Der Große", "Der Schreckliche"]
             }
         };
-
-        // Textos traduzidos
+    
         const translations = {
-            pt: {
-                title: "Gerador de Nomes Piratas",
-                generate: "Gerar Nome",
-                download: "Baixar",
-                share: "Compartilhar",
-                quizTitle: "Quiz do Pirata",
-                quizButton: "Descubra seu nome pirata!",
-                quizQuestion1: "1. Qual sua arma preferida?",
-                quizAnswer1: ["⚔️ Espada", "🏹 Arco", "🔮 Poções"],
-                formSubmit: "Enviar",
-                formSuccess: "Mensagem enviada com sucesso!",
-                formError: "Erro ao enviar mensagem. Tente novamente.",
-                info: `
-                    <h3>Piratas</h3>
-                    <p>Os piratas são guerreiros destemidos que atacam navios em busca de ouro e aventura! Na ficção são carismáticos, mas na história foram cruéis.</p>
-                    
-                    <h3>Nomes de Piratas</h3>
-                    <p>Todo pirata lendário tinha um apelido marcante. Barba Negra, por exemplo, era mais famoso que seu nome real (Edward Teach).</p>
-                    
-                    <h3>Como usar</h3>
-                    <p>Clique em "Gerar Nome" para criar um nome aleatório. Use o quiz para um nome personalizado!</p>
-                    
-                    <h3>Dica</h3>
-                    <p>Você pode baixar ou compartilhar seu nome pirata favorito!</p>
-                `
-            },
-            en: {
-                title: "Pirate Name Generator",
-                generate: "Generate Name",
-                download: "Download",
-                share: "Share",
-                quizTitle: "Pirate Quiz",
-                quizButton: "Discover your pirate name!",
-                quizQuestion1: "1. What's your preferred weapon?",
-                quizAnswer1: ["⚔️ Sword", "🏹 Bow", "🔮 Potions"],
-                formSubmit: "Submit",
-                formSuccess: "Message sent successfully!",
-                formError: "Error sending message. Please try again.",
-                info: `
-                    <h3>Pirates</h3>
-                    <p>Pirates were fearless warriors who attacked ships for gold and adventure! Romanticized in fiction but often cruel in history.</p>
-                    
-                    <h3>Pirate Names</h3>
-                    <p>Every legendary pirate had a striking nickname. Blackbeard was more famous than his real name (Edward Teach).</p>
-                    
-                    <h3>How to use</h3>
-                    <p>Click "Generate Name" to create a random name. Try the quiz for a personalized name!</p>
-                    
-                    <h3>Tip</h3>
-                    <p>You can download or share your favorite pirate name!</p>
-                `
-            },
-            es: {
-                title: "Generador de Nombres Piratas",
-                generate: "Generar Nombre",
-                download: "Descargar",
-                share: "Compartir",
-                quizTitle: "Quiz Pirata",
-                quizButton: "¡Descubre tu nombre pirata!",
-                quizQuestion1: "1. ¿Cuál es tu arma preferida?",
-                quizAnswer1: ["⚔️ Espada", "🏹 Arco", "🔮 Pociones"],
-                formSubmit: "Enviar",
-                formSuccess: "¡Mensaje enviado con éxito!",
-                formError: "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
-                info: `
-                    <h3>Piratas</h3>
-                    <p>¡Los piratas eran guerreros audaces que atacaban barcos en busca de oro y aventura! Romantizados en la ficción pero a menudo crueles.</p>
-                    
-                    <h3>Nombres Piratas</h3>
-                    <p>Cada pirata legendario tenía un apodo llamativo. Barbanegra era más famoso que su nombre real (Edward Teach).</p>
-                    
-                    <h3>Cómo usar</h3>
-                    <p>Haz clic en "Generar Nombre" para crear un nombre aleatorio. ¡Prueba el quiz para un nombre personalizado!</p>
-                    
-                    <h3>Consejo</h3>
-                    <p>¡Puedes descargar o compartir tu nombre pirata favorito!</p>
-                `
-            },
-            fr: {
-                title: "Générateur de Noms Pirates",
-                generate: "Générer un Nom",
-                download: "Télécharger",
-                share: "Partager",
-                quizTitle: "Quiz Pirate",
-                quizButton: "Découvrez votre nom de pirate!",
-                quizQuestion1: "1. Quelle est votre arme préférée?",
-                quizAnswer1: ["⚔️ Épée", "🏹 Arc", "🔮 Potions"],
-                formSubmit: "Envoyer",
-                formSuccess: "Message envoyé avec succès!",
-                formError: "Erreur lors de l'envoi du message. Veuillez réessayer.",
-                info: `
-                    <h3>Pirates</h3>
-                    <p>Les pirates étaient des guerriers intrépides qui attaquaient les navires pour l'or et l'aventure ! Romancés dans la fiction mais souvent cruels.</p>
-                    
-                    <h3>Noms de Pirates</h3>
-                    <p>Chaque pirate légendaire avait un surnom frappant. Barbe Noire était plus célèbre que son vrai nom (Edward Teach).</p>
-                    
-                    <h3>Comment utiliser</h3>
-                    <p>Cliquez sur "Générer un Nom" pour créer un nom aléatoire. Essayez le quiz pour un nom personnalisé !</p>
-                    
-                    <h3>Astuce</h3>
-                    <p>Vous pouvez télécharger ou partager votre nom de pirate préféré !</p>
-                `
-            },
-            de: {
-                title: "Piraten Namen Generator",
-                generate: "Namen generieren",
-                download: "Herunterladen",
-                share: "Teilen",
-                quizTitle: "Piraten Quiz",
-                quizButton: "Entdecke deinen Piratennamen!",
-                quizQuestion1: "1. Was ist deine bevorzugte Waffe?",
-                quizAnswer1: ["⚔️ Schwert", "🏹 Bogen", "🔮 Tränke"],
-                formSubmit: "Senden",
-                formSuccess: "Nachricht erfolgreich gesendet!",
-                formError: "Fehler beim Senden der Nachricht. Bitte versuche es erneut.",
-                info: `
-                    <h3>Piraten</h3>
-                    <p>Piraten waren furchtlose Krieger, die Schiffe für Gold und Abenteuer angriffen! In der Fiktion romantisiert, aber oft grausam.</p>
-                    
-                    <h3>Piraten Namen</h3>
-                    <p>Jeder legendäre Pirat hatte einen markanten Spitznamen. Blackbeard war berühmter als sein richtiger Name (Edward Teach).</p>
-                    
-                    <h3>Wie man verwendet</h3>
-                    <p>Klicken Sie auf "Namen generieren", um einen zufälligen Namen zu erstellen. Versuchen Sie das Quiz für einen personalisierten Namen!</p>
-                    
-                    <h3>Tipp</h3>
-                    <p>Sie können Ihren Lieblings-Piratennamen herunterladen oder teilen!</p>
-                `
-            }
+            pt: { generate: "Gerar Nome", download: "Baixar", share: "Compartilhar" },
+            en: { generate: "Generate", download: "Download", share: "Share" },
+            es: { generate: "Generar", download: "Descargar", share: "Compartir" },
+            fr: { generate: "Générer", download: "Télécharger", share: "Partager" },
+            de: { generate: "Generieren", download: "Herunterladen", share: "Teilen" }
         };
-
+    
         // Elementos DOM
-        const shipNameEl = document.getElementById("shipName");
-        const generateBtn = document.getElementById("generateBtn");
-        const downloadBtn = document.getElementById("downloadBtn");
-        const shareBtn = document.getElementById("shareBtn");
-        const languageSelector = document.getElementById("language");
-        const infoContainer = document.getElementById("infoContainer");
-        const quizBtn = document.getElementById('quizBtn');
-        const quizContainer = document.getElementById('quizContainer');
-        const quizNameResult = document.getElementById('quizNameResult');
-        const useQuizNameBtn = document.getElementById('useQuizName');
-        const contactForm = document.getElementById('contactForm');
-        const formStatus = document.getElementById('formStatus');
-        
+        const elements = {
+            shipName: document.getElementById("shipName"),
+            generateBtn: document.getElementById("generateBtn"),
+            downloadBtn: document.getElementById("downloadBtn"),
+            shareBtn: document.getElementById("shareBtn"),
+            language: document.getElementById("language"),
+            infoContainer: document.getElementById("infoContainer"),
+            quizBtn: document.getElementById('quizBtn'),
+            quizContainer: document.getElementById('quizContainer'),
+            quizNameResult: document.getElementById('quizNameResult'),
+            useQuizName: document.getElementById('useQuizName')
+        };
+    
         let currentLanguage = 'pt';
         let currentName = '"O Tesouro Perdido"';
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            // Configurar ano atual
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            // Carregar VLibras se disponível
-            if (typeof VLibras !== 'undefined') {
-                initVLibras();
-            } else {
-                // Carregar script VLibras dinamicamente
-                const script = document.createElement('script');
-                script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
-                script.onload = initVLibras;
-                document.body.appendChild(script);
-            }
-            
-            // Configurar eventos
-            setupEventListeners();
-            
-            // Atualizar idioma inicial
-            updateLanguage();
-            
-            // Gerar primeiro nome
-            generateName();
-        });
-
-        function setupEventListeners() {
-            // Botões principais
-            generateBtn.addEventListener("click", generateName);
-            downloadBtn.addEventListener("click", downloadName);
-            shareBtn.addEventListener("click", shareName);
-            
-            // Seletor de idioma
-            languageSelector.addEventListener("change", updateLanguage);
-            
-            // Quiz
-            quizBtn.addEventListener('click', showQuiz);
-            document.querySelectorAll('#quizStep1 button').forEach(btn => {
-                btn.addEventListener('click', handleQuizAnswer);
-            });
-            useQuizNameBtn.addEventListener('click', useQuizResult);
-            
-            // Formulário de contato
-            contactForm.addEventListener('submit', handleFormSubmit);
-            
-            // Atalhos de teclado
-            document.addEventListener('keydown', handleKeyboardShortcuts);
-        }
-
-        // Gerar nome aleatório
+    
+        // Funções principais
         function generateName() {
             const langData = namesData[currentLanguage];
             const randomAdj = langData.adjectives[Math.floor(Math.random() * langData.adjectives.length)];
             const randomNoun = langData.nouns[Math.floor(Math.random() * langData.nouns.length)];
             const randomPrefix = langData.prefixes[Math.floor(Math.random() * langData.prefixes.length)];
             
-            // Padrão: "O [Adjetivo] [Substantivo]"
             currentName = `"${randomPrefix} ${randomAdj} ${randomNoun}"`;
             
-            // Animação de fade
-            shipNameEl.style.opacity = 0;
+            elements.shipName.style.opacity = 0;
             setTimeout(() => {
-                shipNameEl.textContent = currentName;
-                shipNameEl.style.opacity = 1;
-                shipNameEl.classList.add("fade-in");
-                
-                // Remover classe após animação
-                setTimeout(() => {
-                    shipNameEl.classList.remove("fade-in");
-                }, 800);
+                elements.shipName.textContent = currentName;
+                elements.shipName.style.opacity = 1;
             }, 300);
         }
-
-        // Baixar imagem do nome
+    
         async function downloadName() {
             try {
-                // Verificar se html2canvas está disponível
+                // Carrega html2canvas dinamicamente se necessário
                 if (typeof html2canvas === 'undefined') {
-                    await loadHtml2Canvas();
+                    await new Promise((resolve, reject) => {
+                        const script = document.createElement('script');
+                        script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+                        script.onload = resolve;
+                        script.onerror = reject;
+                        document.body.appendChild(script);
+                    });
                 }
-                
-                // Feedback visual
-                downloadBtn.disabled = true;
-                const originalText = downloadBtn.querySelector('.button-text').textContent;
-                downloadBtn.querySelector('.button-text').textContent = translations[currentLanguage].download + '...';
-                
-                // Capturar container como imagem
-                const canvas = await html2canvas(document.querySelector(".container"), {
-                    scale: 2,
-                    logging: false,
-                    useCORS: true,
-                    backgroundColor: null
-                });
-                
-                // Criar link de download
+    
+                elements.downloadBtn.disabled = true;
+                const canvas = await html2canvas(document.querySelector(".container"));
                 const link = document.createElement('a');
-                link.download = `${translations[currentLanguage].title} - ${currentName}.png`;
-                link.href = canvas.toDataURL('image/png');
+                link.download = `Nome Pirata - ${currentName}.png`;
+                link.href = canvas.toDataURL();
                 link.click();
-                
             } catch (error) {
-                console.error("Erro ao baixar:", error);
-                showFormStatus(translations[currentLanguage].formError, 'error');
+                alert("Erro ao baixar. Tente novamente!");
             } finally {
-                // Restaurar botão
-                if (downloadBtn) {
-                    downloadBtn.disabled = false;
-                    downloadBtn.querySelector('.button-text').textContent = translations[currentLanguage].download;
-                }
+                elements.downloadBtn.disabled = false;
             }
         }
-        </script>
+    
+        function shareName() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Gerador de Nomes Piratas',
+                    text: `Meu nome pirata é: ${currentName}`,
+                    url: window.location.href
+                });
+            } else {
+                alert(`Copie o nome: ${currentName}`);
+            }
+        }
+    
+        function updateLanguage() {
+            currentLanguage = elements.language.value;
+            elements.generateBtn.querySelector('.button-text').textContent = translations[currentLanguage].generate;
+            elements.downloadBtn.querySelector('.button-text').textContent = translations[currentLanguage].download;
+            elements.shareBtn.querySelector('.button-text').textContent = translations[currentLanguage].share;
+            generateName();
+        }
+    
+        // Quiz functions
+        function showQuiz() {
+            elements.quizContainer.style.display = 'block';
+        }
+    
+        function handleQuizAnswer(e) {
+            const answerType = e.target.getAttribute('data-answer');
+            const quizNames = {
+                aggressive: '"O Terrível Cutelo Negro"',
+                strategic: '"A Flecha Dourada"',
+                mysterious: '"O Alquimista Fantasma"'
+            };
+            elements.quizNameResult.textContent = quizNames[answerType];
+            document.getElementById('quizStep1').style.display = 'none';
+            document.getElementById('quizResult').style.display = 'block';
+        }
+    
+        function useQuizResult() {
+            elements.shipName.textContent = elements.quizNameResult.textContent;
+            elements.quizContainer.style.display = 'none';
+            document.getElementById('quizStep1').style.display = 'block';
+            document.getElementById('quizResult').style.display = 'none';
+        }
+    
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configura ano atual
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Event listeners
+            elements.generateBtn.addEventListener("click", generateName);
+            elements.downloadBtn.addEventListener("click", downloadName);
+            elements.shareBtn.addEventListener("click", shareName);
+            elements.language.addEventListener("change", updateLanguage);
+            elements.quizBtn.addEventListener('click', showQuiz);
+            elements.useQuizName.addEventListener('click', useQuizResult);
+            
+            // Quiz answers
+            document.querySelectorAll('#quizStep1 button').forEach(btn => {
+                btn.addEventListener('click', handleQuizAnswer);
+            });
+    
+            // Gera primeiro nome
+            generateName();
+        });
+    
+        // VLibras (opcional)
+        function initVLibras() {
+            if (typeof VLibras !== 'undefined') {
+                new VLibras.Widget({
+                    rootPath: '/app',
+                    personalization: {
+                        color: '#8b4513',
+                        avatar: 'pirate'
+                    }
+                });
+            }
+        }
+        
+    </script>
       </body>
 </html>    
        
