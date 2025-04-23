@@ -12,7 +12,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background: url('https://img.freepik.com/free-vector/vintage-paper-texture_1048-10911.jpg') no-repeat center fixed;
     background-size: cover;
-    color: var(--cor-texto);
+    color: var(cor-texto);
     line-height: 1.6;
     min-height: 100vh;
     margin: 0;
@@ -25,14 +25,14 @@ body {
     margin: 2rem auto;
     padding: 2rem;
     background: rgba  (255, 255, 255, 0.9);
-    border-radius: var(--bordas);
-    border: 2px solid var(--cor-primaria);
+    border-radius: var(bordas);
+    border: 2px solid var(cor-primaria);
     text-align: center;
     box-shadow: 0 4px 8px rgba  (0, 0, 0, 0.1);
 }
 
 .obrigado-container h1 {
-    color: var  (--cor-secundaria);
+    color: var  (cor-secundaria);
     margin-bottom: 1.5rem;
     font-size: 2.2rem;
 }
@@ -41,16 +41,16 @@ body {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.8rem 1.5rem;
-    background: var  (--cor-primaria);
+    background: var  (cor-primaria);
     color: white;
     text-decoration: none;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     transition: all 0.3s ease;
 }
 
 .obrigado-container a  :hover {
-    background: var  (--cor-secundaria);
-    transform: translateY  (-3px);
+    background: var  (cor-secundaria);
+    transform: translateY  (3px);
     box-shadow: 0 4px 8px rgba  (0, 0, 0, 0.2);
 }
 
@@ -58,14 +58,14 @@ body {
 .contact-form {
     background: rgba  (255, 255, 255, 0.85);
     padding: 2rem;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     margin: 2rem 0;
-    border: 2px solid var  (--cor-primaria);
+    border: 2px solid var  (cor-primaria);
     box-shadow: 0 2px 6px rgba  (0, 0, 0, 0.1);
 }
 
 .contact-form h3 {
-    color: var  (--cor-primaria);
+    color: var  (cor-primaria);
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     text-align: center;
@@ -76,8 +76,8 @@ body {
     width: 100%;
     padding: 0.8rem;
     margin-bottom: 1rem;
-    border: 2px solid var  (--cor-primaria);
-    border-radius: var  (--bordas);
+    border: 2px solid var  (cor-primaria);
+    border-radius: var  (bordas);
     background: rgba  (255, 255, 255, 0.9);
     font-family: 'Roboto', sans-serif;
     transition: border 0.3s ease;
@@ -85,7 +85,7 @@ body {
 
 .contact-form input  :focus,
 .contact-form textarea  :focus {
-    border-color: var  (--cor-destaque);
+    border-color: var  (cor-destaque);
     outline: none;
 }
 
@@ -95,13 +95,13 @@ body {
 }
 
 .contact-form button {
-    background: var  (--cor-primaria);
+    background: var  (cor-primaria);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
     font-size: 1.1rem;
     cursor: pointer;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     transition: all 0.3s ease;
     width: 100%;
     margin-top: 0.5rem;
@@ -110,7 +110,7 @@ body {
 }
 
 .contact-form button  :hover {
-    background: var  (--cor-secundaria);
+    background: var  (cor-secundaria);
     transform: translateY  (-2px);
 }
 
@@ -130,7 +130,7 @@ body {
     height: 50px;
     border-radius: 50%;
     border: none;
-    background: var  (--cor-primaria);
+    background: var  (cor-primaria);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -143,7 +143,7 @@ body {
 
 #accessibility-treasure button  :hover {
     transform: scale  (1.1);
-    background: var  (--cor-secundaria);
+    background: var  (cor-secundaria);
 }
 
 /* ==================== ANIMAÇÕES & ESTADOS ==================== */
@@ -174,7 +174,7 @@ body {
     display: none;
     margin: 1rem 0;
     padding: 1rem;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     text-align: center;
     font-size: 0.9rem;
 }
@@ -199,7 +199,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background: url('https://img.freepik.com/free-vector/vintage-paper-texture_1048-10911.jpg') no-repeat center fixed;
     background-size: cover;
-    color: var(--cor-texto);
+    color: var(cor-texto);
     line-height: 1.6;
     min-height: 100vh;
     margin: 0;
@@ -212,14 +212,14 @@ body {
     margin: 2rem auto;
     padding: 2rem;
     background: rgba  (255, 255, 255, 0.9);
-    border-radius: var(--bordas);
-    border: 2px solid var(--cor-primaria);
+    border-radius: var(bordas);
+    border: 2px solid var(cor-primaria);
     text-align: center;
     box-shadow: 0 4px 8px rgba  (0, 0, 0, 0.1);
 }
 
 .obrigado-container h1 {
-    color: var  (--cor-secundaria);
+    color: var  (cor-secundaria);
     margin-bottom: 1.5rem;
     font-size: 2.2rem;
 }
@@ -228,16 +228,16 @@ body {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.8rem 1.5rem;
-    background: var  (--cor-primaria);
+    background: var  (cor-primaria);
     color: white;
     text-decoration: none;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     transition: all 0.3s ease;
 }
 
 .obrigado-container a  :hover {
-    background: var  (--cor-secundaria);
-    transform: translateY  (-3px);
+    background: var  (cor-secundaria);
+    transform: translateY  (3px);
     box-shadow: 0 4px 8px rgba  (0, 0, 0, 0.2);
 }
 
@@ -245,14 +245,14 @@ body {
 .contact-form {
     background: rgba  (255, 255, 255, 0.85);
     padding: 2rem;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     margin: 2rem 0;
-    border: 2px solid var  (--cor-primaria);
+    border: 2px solid var  (cor-primaria);
     box-shadow: 0 2px 6px rgba  (0, 0, 0, 0.1);
 }
 
 .contact-form h3 {
-    color: var  (--cor-primaria);
+    color: var  (cor-primaria);
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     text-align: center;
@@ -263,8 +263,8 @@ body {
     width: 100%;
     padding: 0.8rem;
     margin-bottom: 1rem;
-    border: 2px solid var  (--cor-primaria);
-    border-radius: var  (--bordas);
+    border: 2px solid var  (cor-primaria);
+    border-radius: var  (bordas);
     background: rgba  (255, 255, 255, 0.9);
     font-family: 'Roboto', sans-serif;
     transition: border 0.3s ease;
@@ -272,7 +272,7 @@ body {
 
 .contact-form input  :focus,
 .contact-form textarea  :focus {
-    border-color: var  (--cor-destaque);
+    border-color: var  (cor-destaque);
     outline: none;
 }
 
@@ -282,13 +282,13 @@ body {
 }
 
 .contact-form button {
-    background: var  (--cor-primaria);
+    background: var  (cor-primaria);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
     font-size: 1.1rem;
     cursor: pointer;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     transition: all 0.3s ease;
     width: 100%;
     margin-top: 0.5rem;
@@ -297,7 +297,7 @@ body {
 }
 
 .contact-form button  :hover {
-    background: var  (--cor-secundaria);
+    background: var  (cor-secundaria);
     transform: translateY  (-2px);
 }
 
@@ -317,7 +317,7 @@ body {
     height: 50px;
     border-radius: 50%;
     border: none;
-    background: var  (--cor-primaria);
+    background: var  (cor-primaria);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -330,7 +330,7 @@ body {
 
 #accessibility-treasure button  :hover {
     transform: scale  (1.1);
-    background: var  (--cor-secundaria);
+    background: var  (cor-secundaria);
 }
 
 /* ==================== ANIMAÇÕES & ESTADOS ==================== */
@@ -361,7 +361,7 @@ body {
     display: none;
     margin: 1rem 0;
     padding: 1rem;
-    border-radius: var  (--bordas);
+    border-radius: var  (bordas);
     text-align: center;
     font-size: 0.9rem;
 }
@@ -392,7 +392,7 @@ body {
 }
 
 :focus {
-    outline: 3px solid var(--cor-destaque) !important;
+    outline: 3px solid var(cor-destaque) !important;
     outline-offset: 2px;
 }
 
@@ -414,7 +414,7 @@ body {
 }
 
 .copyright a {
-    color: var(--cor-destaque);
+    color: var(cor-destaque);
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
@@ -422,7 +422,7 @@ body {
 
 .copyright a:hover {
     text-decoration: underline;
-    color: var(--cor-secundaria);
+    color: var(cor-secundaria);
 }
 .pirate-menu {
     list-style: none;
@@ -446,5 +446,5 @@ body {
 
 .pirate-menu a:hover {
     background-color: #a52a2a;
-    transform: translateY(-3px);
+    transform: translateY(                                                  3px);
 }
