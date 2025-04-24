@@ -1,7 +1,8 @@
-# gerador-pirata
+[Acesse o Gerador Pirata](https://www.nomespiratas.com.br/)
+
 # ⚓ Gerador de Nomes Piratas
 
-![Preview do Site](https://raw.githubusercontent.com/seuuser/gerador-pirata/main/preview.jpg) <!-- Adicione uma imagem depois -->
+![Preview do Site](https://raw.githubusercontent.com/firstmsv/gerador-pirata/main/preview.jpg)
 
 Um gerador divertido de nomes para navios piratas, criando combinações únicas como "O Dragão Escarlate" ou "A Caveira Traiçoeira".
 
@@ -14,15 +15,12 @@ Um gerador divertido de nomes para navios piratas, criando combinações únicas
 
 ## 🚀 Como Usar
 
-1. Acesse [nomespiratas.com.br](https://nomespiratas.com.br)
+1. Acesse [gerador-pirata.org](https://www.gerador-pirata.org/)
 2. Clique em **"Gerar Nome"** para criar combinações
 3. Use **"Baixar"** para salvar ou **"Compartilhar"** para divulgar
 
 ```bash
-# Para desenvolvimento local (opcional):
-git clone https://github.com/seuuser/gerador-pirata.git
+# Para desenvolvimento local:
+git clone https://github.com/firstmsv/gerador-pirata.git
 cd gerador-pirata
 abra index.html no navegador
-
-🛠 Tecnologias
-<div style="display: flex; gap: 10px;"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white"> </div>
