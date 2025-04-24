@@ -15,7 +15,7 @@ Um gerador divertido de nomes para navios piratas, criando combinações únicas
 
 ## 🚀 Como Usar
 
-1. Acesse [gerador-pirata.org](https://www.gerador-pirata.org/)
+1. Acesse [gerador-pirata.org](https://www.nomespiratas.com.br/)
 2. Clique em **"Gerar Nome"** para criar combinações
 3. Use **"Baixar"** para salvar ou **"Compartilhar"** para divulgar
 
