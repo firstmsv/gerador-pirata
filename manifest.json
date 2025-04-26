@@ -1,0 +1,21 @@
+{
+    "name": "Gerador de Nomes Piratas",
+    "short_name": "Nomes Piratas",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#f5f5dc",
+    "description": "Gerador de nomes para navios piratas",
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "theme_color": "#8b4513"
+}
