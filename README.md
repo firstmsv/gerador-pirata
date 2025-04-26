@@ -1,6 +1,6 @@
 # ⚓ Gerador de Nomes Piratas  
 
-![Preview do Site](https://raw.githubusercontent.com/SEU-USUARIO/gerador-pirata/main/preview.jpg)  
+![Preview do Site](https://raw.githubusercontent.com/firstmsv/gerador-pirata/main/preview.jpg)  
 
 Um gerador divertido de nomes para **navios piratas, RPGs ou nicknames**. Exemplos:  
 - **"O Fantasma dos Mares"**  
