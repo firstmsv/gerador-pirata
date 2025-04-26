@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+                <!-- Google tag (gtag.js) -->
+                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MCB182LFH"></script>
+                 <script>
+                 window.dataLayer = window.dataLayer || [];
+                 function gtag(){dataLayer.push(arguments);}
+                 gtag('js', new Date());
+                 gtag('config', 'G-6MCB182LFH');
+                 </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Nomes Piratas | Crie Nomes Autênticos para Navios</title>
@@ -303,6 +312,33 @@
             font-size: 0.9rem;
         }
         
+
+        /* Widget de Acessibilidade */
+        #accessibility-treasure {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        #accessibility-treasure button {
+            background: var(--cor-primaria);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+
         /* Status do Formulário */
         .form-status {
             padding: 1rem;
@@ -404,6 +440,17 @@
         :focus {
             outline: 3px solid var(--cor-destaque);
             outline-offset: 2px;
+        }        
+        .high-contrast {
+            background: #000 !important;
+            color: #FF0 !important;
+            border-color: #FFF !important;
+        }
+        
+        .high-contrast button {
+            background: #000 !important;
+            color: #FF0 !important;
+            border: 2px solid #FF0 !important;
         }
     </style>
 </head>
@@ -420,8 +467,7 @@
         </select>
         
         <div id="shipName" class="fade-in" aria-live="polite">"O Tesouro Perdido"</div>
-        
-      <!-- No seu container principal, substitua a seção da dica e o botão por: -->
+        <!-- No seu container principal, substitua a seção da dica e o botão por: -->
 <div class="pirate-info" id="infoContainer" aria-live="polite">
     <h3>Piratas</h3>
     <p>Os piratas são guerreiros destemidos que atacam navios em busca de ouro e aventura! Na ficção são carismáticos, mas na história foram cruéis.</p>
@@ -452,6 +498,27 @@
         <span>🔮</span> <span class="button-text">Descubra seu nome pirata!</span>
     </button>
 </div>
+
+        <div class="pirate-info" id="infoContainer" aria-live="polite">
+            <!-- Conteúdo será preenchido pelo JavaScript -->
+        </div>
+        
+        <div class="buttons">
+            <button id="generateBtn" aria-label="Gerar novo nome pirata">
+                <span>🎲</span> <span class="button-text">Gerar Nome</span>
+            </button>
+            <button id="downloadBtn" aria-label="Baixar imagem com o nome gerado">
+                <span>💾</span> <span class="button-text">Baixar</span>
+            </button>
+            <button id="shareBtn" aria-label="Compartilhar nome gerado">
+                <span>📢</span> <span class="button-text">Compartilhar</span>
+            </button>
+        </div>
+        
+        <button id="quizBtn" class="quiz-button" aria-label="Responder quiz para nome personalizado">
+            <span>🔮</span> <span class="button-text">Descubra seu nome pirata!</span>
+        </button>
+    </div>
 
     <div id="quizContainer" class="quiz-container" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
         <h2 id="quizTitle">Quiz do Pirata</h2>
@@ -489,12 +556,13 @@
                     </a>
                     <a href="https://github.com/firstmsv" target="_blank" class="social-icon" aria-label="GitHub">
                         <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="32" height="32">
-                    </a>
+                    </a>          
                 </div>
             </div>
             <div class="contact-form">
                 <h3>Envie uma mensagem</h3>
                 <form id="contactForm" action="https://formsubmit.co/firstmsv40@gmail.com" method="POST">
+
                     <input type="hidden" name="_next" value="https://nomespiratas.com.br/obrigado.html">
                     <input type="hidden" name="_subject" value="Novo contato do Nomes Piratas">
                     <input type="text" name="_honey" style="display:none">
@@ -502,16 +570,30 @@
                     
                     <div class="form-group">
                         <label for="name" class="sr-only">Seu nome</label>
+
+                    <!-- Configurações essenciais: -->
+                    <input type="hidden" name="_next" value="https://nomespiratas.com.br/obrigado.html">
+                    <input type="hidden" name="_subject" value="Novo contato - Nomes Piratas">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none">  <!-- Anti-spam -->
+                    
+                    <div class="form-group">
+
                         <input type="text" id="name" name="name" placeholder="Seu nome" required>
                     </div>
                     
                     <div class="form-group">
+
                         <label for="email" class="sr-only">Seu e-mail</label>
+
+
                         <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
                     </div>
                     
                     <div class="form-group">
+
                         <label for="message" class="sr-only">Sua mensagem</label>
+
                         <textarea id="message" name="message" placeholder="Sua mensagem..." required minlength="10"></textarea>
                     </div>
                     
@@ -521,10 +603,28 @@
                 </form>
             </div>
                
+            </div>  
+                    <span class="loading-spinner" aria-hidden="true"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+
         <div class="copyright">
             &copy; <span id="currentYear"></span> Todos os direitos reservados
         </div>
     </footer>
+
+   
+     <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active" aria-label="Botão de acesso ao VLibras"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
 
     <!-- JavaScript -->
     <script>
@@ -564,6 +664,7 @@
             fr: { generate: "Générer", download: "Télécharger", share: "Partager" },
             de: { generate: "Generieren", download: "Herunterladen", share: "Teilen" }
         };
+
             // Atualize a seção de elementos DOM:
 const elements = {
     shipName: document.getElementById("shipName"),
@@ -626,6 +727,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+    
+        // Elementos DOM
+        const elements = {
+            shipName: document.getElementById("shipName"),
+            generateBtn: document.getElementById("generateBtn"),
+            downloadBtn: document.getElementById("downloadBtn"),
+            shareBtn: document.getElementById("shareBtn"),
+            language: document.getElementById("language"),
+            infoContainer: document.getElementById("infoContainer"),
+            quizBtn: document.getElementById('quizBtn'),
+            quizContainer: document.getElementById('quizContainer'),
+            quizNameResult: document.getElementById('quizNameResult'),
+            useQuizName: document.getElementById('useQuizName')
+        };
+
     
         let currentLanguage = 'pt';
         let currentName = '"O Tesouro Perdido"';
@@ -740,3 +857,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
+          
+    </script>
+  </body>
+</html>    
+       

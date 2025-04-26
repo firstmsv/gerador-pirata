@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
+=======
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+>>>>>>> c8f4b3123d5890129c03715286b841cb70a54436
     "version": "0.2.0",
     "configurations": [
         {
@@ -9,6 +15,7 @@
             "webRoot": "${workspaceFolder}"
         },
         {
+<<<<<<< HEAD
             "name": "Attach to Chrome",
             "port": 9222,
             "request": "attach",
@@ -21,6 +28,12 @@
             "port": 9222,
             "request": "attach",
             "type": "chrome",
+=======
+            "type": "vscode-edge-devtools.debug",
+            "request": "attach",
+            "name": "Attach to Microsoft Edge and open the Edge DevTools",
+            "url": "http://localhost:8080",
+>>>>>>> c8f4b3123d5890129c03715286b841cb70a54436
             "webRoot": "${workspaceFolder}"
         },
         {
@@ -30,6 +43,7 @@
             "type": "chrome",
             "webRoot": "${workspaceFolder}"
         },
+<<<<<<< HEAD
         {
             "name": "Abrir arquivo local",
             "type": "chrome",
@@ -44,5 +58,9 @@
             "url": "http://localhost:5500/${workspaceFolderBasename}/index.html",
             "webRoot": "${workspaceFolder}"
         }
+=======
+       
+       
+>>>>>>> c8f4b3123d5890129c03715286b841cb70a54436
     ]
 }
