@@ -31,6 +31,6 @@ Um gerador divertido de nomes para **navios piratas, RPGs ou nicknames**. Exempl
 
 ## 📂 Desenvolvimento  
 ```bash  
-git clone https://github.com/SEU-USUARIO/gerador-pirata.git  
+git clone https://github.com/firstmsv/gerador-pirata.git  
 cd gerador-pirata  
 open index.html  
