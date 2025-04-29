@@ -23,7 +23,7 @@ Um gerador divertido e aleatório de nomes para **navios piratas, personagens de
 ---  
 
 ## 🚀 Como Usar  
-1. **Acesse o site**: [gerador-pirata.org](https://www.gerador-pirata.org/)  
+1. **Acesse o site**: [nomespiratas.com.br](https://www.nomespiratas.com.br/)  
 2. **Clique em "Gerar Nome"** para criar combinações únicas.  
 3. **Personalize** (opcional): Altere cor/fonte antes de baixar.  
 4. **Baixe ou Compartilhe**: Salve como imagem ou envie para redes sociais.  
