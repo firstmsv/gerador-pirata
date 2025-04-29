@@ -4,7 +4,7 @@
 
 Aqui está o preview do site:
 
-![Preview do site](https://raw.githubusercontent.com/firstmsv/gerador-pirata/main/assets/imagem/capitao-pe-de-pano.jpeg)
+![Preview do site](https://raw.githubusercontent.com/firstmsv/gerador-pirata/main/imagem/capitao-pe-de-pano.jpeg)
   
 
 Um gerador divertido e aleatório de nomes para **navios piratas, personagens de RPG ou apelidos temáticos**. Cria combinações únicas como:  
