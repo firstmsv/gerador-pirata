@@ -1,6 +1,7 @@
 # ⚓ Gerador de Nomes Piratas  
 
-![Preview do Site](https://raw.githubusercontent.com/firstmsv/gerador-pirata/main/]imagem/capitao-pe-de-pano.png)  
+![Preview do Site](https://raw.githubusercontent.com/firstmsv/gerador-pirata/main/]imagem/capitao-pe-de-pano.jpeg)
+
 
 🌐 **Site Oficial**: [nomespiratas.com.br](https://nomespiratas.com.br)  
 
