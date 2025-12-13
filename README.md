@@ -1,4 +1,4 @@
-# ⚓ Gerador de Nomes Piratas  
+
 
 ## ☠️ Pirate Name Generator
 
