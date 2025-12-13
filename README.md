@@ -1,45 +1,30 @@
 # ⚓ Gerador de Nomes Piratas  
 
-# Preview do Site
+## ☠️ Pirate Name Generator
 
-Aqui está o preview do site:
+A fun and creative web-based project developed to generate random pirate-style names.
+It can be used for RPG characters, pirate ships, nicknames, or creative inspiration.
 
-![Preview do site](https://raw.githubusercontent.com/firstmsv/gerador-pirata/main/imagem/capitao-pe-de-pano.jpeg)
-  
+## 🎯 Project Purpose
+The purpose of this project is to practice frontend development concepts and user interaction
+while delivering a simple and entertaining experience.
 
-Um gerador divertido e aleatório de nomes para **navios piratas, personagens de RPG ou apelidos temáticos**. Cria combinações únicas como:  
-- **"O Dragão Escarlate"**  
-- **"A Caveira Traiçoeira"**  
-- **"Maré Negra"**  
+## ✨ Features
+- Random pirate name generation
+- Unique and creative name combinations
+- Simple and intuitive interface
+- Multi-language support (planned / experimental)
 
----  
+## 🛠️ Technologies Used
+- HTML
+- CSS
+- JavaScript
 
-## ✨ Funcionalidades  
-✅ Geração instantânea de nomes autênticos  
-✅ Download do nome como imagem (PNG/JPG)  
-✅ Compartilhamento direto no Twitter, Facebook e WhatsApp  
-✅ Suporte a múltiplos idiomas: Português (PT), Inglês (EN), Espanhol (ES), Francês (FR), Alemão (DE)  
+## 🚀 How to Use
+1. Open the application in a web browser
+2. Click the generate button
+3. A random pirate name will be displayed instantly
 
----  
+## 📌 Project Type
+Personal / Study project focused on frontend fundamentals and creative development.
 
-## 🚀 Como Usar  
-1. **Acesse o site**: [nomespiratas.com.br](https://www.nomespiratas.com.br/)  
-2. **Clique em "Gerar Nome"** para criar combinações únicas.  
-3. **Personalize** (opcional): Altere cor/fonte antes de baixar.  
-4. **Baixe ou Compartilhe**: Salve como imagem ou envie para redes sociais.  
-
----  
-
-## 🛠 Tecnologias Utilizadas  
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)  
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)  
-![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white)  
-
----  
-
-## 📂 Desenvolvimento Local  
-```bash  
-git clone https://github.com/seu-usuario/gerador-pirata.git  
-cd gerador-pirata  
-open index.html  # Ou arraste o arquivo para o navegador  
