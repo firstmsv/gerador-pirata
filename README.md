@@ -1,6 +1,8 @@
 
 ## ☠️ Pirate Name Generator
 
+![Pirate Name Generator Preview](./imagem-gerador-nomespiratas.png)
+
 ![Status](https://img.shields.io/badge/status-live-brightgreen)
 ![Tech](https://img.shields.io/badge/javascript-vanilla-yellow)
 
