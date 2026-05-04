@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Gerador de Nomes Piratas 🏴‍☠️ | Descubra Seu Nome Pirata</title>
+    <meta
+      name="description"
+      content="Gere seu nome pirata único gratuitamente! Escolha o gênero, idioma e estilo. Mais de 10.000 combinações possíveis. Em Português, English e Español."
+    />
+    <meta
+      name="keywords"
+      content="gerador de nomes piratas, nome pirata, pirate name generator, generador nombres piratas, nomes piratas online"
+    />
+    <meta name="author" content="Marcelo Vitória" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://nomespiratas.com.br/" />
+
+    <!-- Open Graph (WhatsApp, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gerador de Nomes Piratas 🏴‍☠️" />
+    <meta
+      property="og:description"
+      content="Descubra seu nome pirata único! Mais de 10.000 combinações em PT, EN e ES."
+    />
+    <meta property="og:url" content="https://nomespiratas.com.br/" />
+    <meta
+      property="og:image"
+      content="https://nomespiratas.com.br/og-image.jpg"
+    />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gerador de Nomes Piratas 🏴‍☠️" />
+    <meta
+      name="twitter:description"
+      content="Descubra seu nome pirata único!"
+    />
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Gerador de Nomes Piratas",
+        "description": "Gerador gratuito de nomes piratas com mais de 10.000 combinações",
+        "url": "https://nomespiratas.com.br",
+        "applicationCategory": "Entertainment",
+        "inLanguage": ["pt-BR", "en", "es"],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
+      }
+    </script>
+
+    <!-- ══════════════════════════════════════════
+       ADSENSE — descomente após aprovação da conta
+       Substitua ca-pub-XXXX pelo seu Publisher ID
+       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+       ══════════════════════════════════════════ -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ANÚNCIO TOPO — descomente após aprovação AdSense
+  <div class="ad-wrapper ad-top">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
+
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1 id="title">🏴‍☠️ Gerador de Nomes Piratas</h1>
+        <p id="subtitle">Descubra seu destino nos Sete Mares</p>
+
+        <select
+          id="language"
+          onchange="changeLang()"
+          aria-label="Selecionar idioma"
+        >
+          <option value="pt">🇧🇷 Português</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="es">🇪🇸 Español</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="gender-select" role="group" aria-label="Selecionar gênero">
+      <button class="gender-btn active" onclick="setGender('male', this)">
+        👨 <span data-i18n="male">Masculino</span>
+      </button>
+      <button class="gender-btn" onclick="setGender('female', this)">
+        👩 <span data-i18n="female">Feminino</span>
+      </button>
+    </div>
+
+    <main class="page-container">
+      <div class="result-area">
+        <p id="result-label" class="result-label">Seu nome pirata</p>
+
+        <div id="result-name" class="result-name" aria-live="polite">
+          Clique para gerar ☠️
+        </div>
+
+        <button id="btn-gen" class="btn-generate" onclick="generateName()">
+          <span id="btn-gen-text">⚓ 🔥 Descobrir Meu Nome Pirata</span>
+        </button>
+
+        <p class="hint-text">
+          👇 Cada clique revela um novo nome... você consegue parar?
+        </p>
+
+        <div id="result-title" class="result-title" aria-live="polite"></div>
+      </div>
+
+      <!-- ANÚNCIO PRINCIPAL — descomente após aprovação AdSense
+    <div class="ad-wrapper ad-main">
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="2222222222"
+           data-ad-format="rectangle"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    -->
+
+      <div class="actions-row">
+        <button
+          class="btn-action"
+          onclick="copyName()"
+          aria-label="Copiar nome"
+        >
+          📋 <span data-i18n="copy">Copiar</span>
+        </button>
+        <button
+          class="btn-action"
+          onclick="saveFavorite()"
+          aria-label="Favoritar nome"
+        >
+          ⭐ <span data-i18n="favorite">Favoritar</span>
+        </button>
+        <button
+          class="btn-action"
+          onclick="shareNative()"
+          aria-label="Compartilhar nome"
+        >
+          📤 <span data-i18n="share">Compartilhar</span>
+        </button>
+      </div>
+
+      <p class="counter" id="counter" aria-live="polite"></p>
+
+      <div class="suggestions">
+        <h2 class="section-title">💡 Outros nomes que você pode gostar</h2>
+        <div id="suggestions-list" role="list"></div>
+      </div>
+
+      <div
+        class="favorites-section"
+        id="favorites-section"
+        style="display: none"
+      >
+        <h2 class="section-title">⭐ Seus Favoritos</h2>
+        <div id="favorites-list" role="list"></div>
+        <button class="btn-clear" onclick="clearFavorites()">
+          🗑️ <span data-i18n="clearFav">Limpar Favoritos</span>
+        </button>
+      </div>
+
+      <div class="quiz-card">
+        <h2 class="section-title">
+          🗺️ <span data-i18n="quizTitle">Qual seu estilo?</span>
+        </h2>
+        <div class="quiz-buttons">
+          <button class="quiz-btn" onclick="quizAnswer('agressivo')">
+            ⚔️ <span data-i18n="quizAgg">Agressivo</span>
+          </button>
+          <button class="quiz-btn" onclick="quizAnswer('estrategista')">
+            🧠 <span data-i18n="quizStr">Estratégico</span>
+          </button>
+          <button class="quiz-btn" onclick="quizAnswer('misterioso')">
+            🌑 <span data-i18n="quizMys">Misterioso</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ANÚNCIO RODAPÉ — descomente após aprovação AdSense
+    <div class="ad-wrapper ad-footer">
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="3333333333"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    -->
+
+      <!-- ══════════════════════════════════════════
+         CONTEÚDO SEO — visível para o Google
+         ══════════════════════════════════════════ -->
+      <section
+        class="seo-content"
+        aria-label="Sobre o Gerador de Nomes Piratas"
+      >
+        <h2 class="seo-title">🏴‍☠️ O Melhor Gerador de Nomes Piratas Online</h2>
+
+        <p class="seo-text">
+          Bem-vindo ao <strong>Gerador de Nomes Piratas</strong> mais completo
+          da internet! Com mais de <strong>27.000 combinações únicas</strong>,
+          você vai descobrir um nome pirata épico que combina perfeitamente com
+          sua personalidade — seja para jogos de RPG, fantasias, histórias
+          criativas ou simplesmente para se divertir com amigos.
+        </p>
+
+        <div class="seo-grid">
+          <div class="seo-card">
+            <h3>⚔️ Para que serve um nome pirata?</h3>
+            <p>
+              Nomes piratas são perfeitos para
+              <strong>personagens de RPG</strong> (como Dungeons & Dragons,
+              Pathfinder e sistemas de mesa), jogos de videogame como
+              <em>Sea of Thieves</em> e <em>Assassin's Creed Black Flag</em>,
+              cosplay, fanfiction, histórias de aventura, apelidos criativos em
+              redes sociais e festas temáticas. Um bom nome pirata transmite
+              poder, mistério e lenda.
+            </p>
+          </div>
+
+          <div class="seo-card">
+            <h3>🌊 Como funciona o gerador?</h3>
+            <p>
+              Nosso algoritmo combina
+              <strong>nomes clássicos de piratas históricos</strong> com
+              prefixos e sufixos temáticos criando combinações únicas a cada
+              clique. Você pode escolher entre
+              <strong>masculino ou feminino</strong>, selecionar o idioma
+              (Português, English ou Español) e usar o quiz de personalidade
+              para descobrir seu estilo pirata ideal.
+            </p>
+          </div>
+
+          <div class="seo-card">
+            <h3>🗺️ Piratas famosos da história</h3>
+            <p>
+              A história está repleta de piratas lendários:
+              <strong>Barba Negra</strong> (Edward Teach), que aterrorizou o
+              Atlântico no século XVIII; <strong>Anne Bonny</strong> e
+              <strong>Mary Read</strong>, as temidas piratas mulheres;
+              <strong>Henry Morgan</strong>, o bucaneiro do Caribe; e
+              <strong>Bartholomew Roberts</strong>, que capturou mais de 400
+              navios. Nosso gerador presta homenagem a esses ícones.
+            </p>
+          </div>
+
+          <div class="seo-card">
+            <h3>🎭 Dicas para criar seu personagem pirata</h3>
+            <p>
+              Um bom personagem pirata vai além do nome. Pense na sua
+              <strong>origem</strong> (Caribe, Mediterrâneo, Mar do Sul?), no
+              tipo de <strong>navio</strong> que comanda, nas suas
+              <strong>habilidades</strong> (navegação, esgrima, negociação?) e
+              no seu <strong>código de honra</strong>. Use nosso quiz de
+              personalidade para descobrir se você é um pirata agressivo,
+              estrategista ou misterioso.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ — formato rico para Google (rich snippet) -->
+        <div class="seo-faq" itemscope itemtype="https://schema.org/FAQPage">
+          <h2 class="seo-title">❓ Perguntas Frequentes</h2>
+
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <h3 itemprop="name">Como gerar um nome pirata único?</h3>
+            <div
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                É simples! Escolha o gênero (masculino ou feminino), selecione o
+                idioma de preferência e clique no botão
+                <em>"Descobrir Meu Nome Pirata"</em>. Cada clique gera uma
+                combinação diferente entre mais de 27.000 possibilidades. Você
+                também pode salvar seus favoritos clicando em ⭐.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <h3 itemprop="name">O gerador de nomes piratas é gratuito?</h3>
+            <div
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Sim, 100% gratuito e sem limite de usos! Você pode gerar quantos
+                nomes quiser, salvar favoritos, compartilhar com amigos e usar
+                em qualquer projeto pessoal ou criativo sem nenhum custo.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <h3 itemprop="name">Posso usar o nome gerado em jogos e RPG?</h3>
+            <div
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Com certeza! Os nomes gerados são perfeitos para personagens de
+                RPG de mesa, videogames, fanfiction, cosplay e qualquer projeto
+                criativo. Todos os nomes são originais e combinam elementos
+                históricos com toques fantasiosos.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <h3 itemprop="name">O gerador funciona em outros idiomas?</h3>
+            <div
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Sim! O gerador funciona em três idiomas:
+                <strong>Português</strong>, <strong>English</strong> e
+                <strong>Español</strong>. Cada idioma tem seu próprio banco de
+                nomes, prefixos e sufixos temáticos, garantindo nomes autênticos
+                em cada língua.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="faq-item"
+            itemscope
+            itemprop="mainEntity"
+            itemtype="https://schema.org/Question"
+          >
+            <h3 itemprop="name">Como compartilhar meu nome pirata?</h3>
+            <div
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <p itemprop="text">
+                Após gerar seu nome, clique no botão
+                <em>"Compartilhar"</em> para enviar diretamente pelo WhatsApp,
+                Instagram, TikTok ou qualquer outro app. Também é possível
+                copiar o nome com o botão <em>"Copiar"</em> e colar onde quiser.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de exemplos de nomes — conteúdo indexável -->
+        <div class="seo-examples">
+          <h2 class="seo-title">⚓ Exemplos de Nomes Piratas Épicos</h2>
+          <p class="seo-text">
+            Veja alguns exemplos do que nosso gerador pode criar:
+          </p>
+          <div class="examples-grid">
+            <span class="example-name">⚔️ Jack Sangue Negro</span>
+            <span class="example-name">⚔️ Anne Tempestade Sombria</span>
+            <span class="example-name">⚔️ Morgan Barba Maldita</span>
+            <span class="example-name">⚔️ Mary Olho de Ouro</span>
+            <span class="example-name">⚔️ Edward Crânio Eterno</span>
+            <span class="example-name">⚔️ Rosa Mar Furioso</span>
+            <span class="example-name">⚔️ Drake Espada Negra</span>
+            <span class="example-name">⚔️ Calypso Noite das Trevas</span>
+            <span class="example-name">⚔️ Flint Ferro Invencível</span>
+            <span class="example-name">⚔️ Morgana Vento Imortal</span>
+            <span class="example-name">⚔️ Silver Névoa Astuta</span>
+            <span class="example-name">⚔️ Isabella Canhão Lendário</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © <span id="current-year"></span> Marcelo Vitória &nbsp;|&nbsp;
+        <a href="politica-de-privacidade.html" class="footer-link"
+          >Política de Privacidade</a
+        >
+        &nbsp;|&nbsp;
+        <a href="termos-de-uso.html" class="footer-link">Termos de Uso</a>
+      </p>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDXMr1Yi0MiZKrbayz3cnGLdssRMEOMX9s",
+        authDomain: "pirate-name-generator-89e57.firebaseapp.com",
+        projectId: "pirate-name-generator-89e57",
+        storageBucket: "pirate-name-generator-89e57.firebasestorage.app",
+        messagingSenderId: "141075849217",
+        appId: "1:141075849217:web:c06485079a85de66d2e000",
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
