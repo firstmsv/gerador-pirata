@@ -1,0 +1,5 @@
+# Redireciona www para raiz
+https://www.nomespiratas.com.br/* https://nomespiratas.com.br/:splat 301!
+
+# SPA fallback — todas as rotas retornam o index
+/* /index.html 200

@@ -3,18 +3,21 @@
 
   <url>
     <loc>https://candid-dragon-05e719.netlify.app/</loc>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://candid-dragon-05e719.netlify.app/politica-de-privacidade.html</loc>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://candid-dragon-05e719.netlify.app/termos-de-uso.html</loc>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
