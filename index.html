@@ -3,51 +3,60 @@
   <head>
     <meta charset="UTF-8" />
 
-<!-- REDIRECT DESATIVADO (ativar só quando tiver domínio)
-<script>
-if (window.location.hostname.includes("github.io")) {
-  window.location.href = "https://nomespiratas.com.br"; 
-}
-</script>
-
-<meta http-equiv="refresh" content="0; url=https://nomespiratas.com.br">
-
-
-  window.location.href = "https://nomespiratas.com.br"; -->
-
-
-<meta property="og:url" content="https://candid-dragon-05e719.netlify.app/">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Meta Tags -->
     <title>Gerador de Nomes Piratas 🏴‍☠️ | Descubra Seu Nome Pirata</title>
+
     <meta
       name="description"
       content="Gere seu nome pirata único gratuitamente! Escolha o gênero, idioma e estilo. Mais de 10.000 combinações possíveis. Em Português, English e Español."
     />
+
     <meta
       name="keywords"
       content="gerador de nomes piratas, nome pirata, pirate name generator, generador nombres piratas, nomes piratas online"
     />
+
     <meta name="author" content="Marcelo Vitória" />
     <meta name="robots" content="index, follow" />
-    //<link rel="canonical" href="https://candid-dragon-05e719.netlify.app" />//
 
-    <!-- Open Graph (WhatsApp, Facebook) -->
+    <!-- Canonical -->
+    <link rel="canonical" href="https://nomespiratas.com.br" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Gerador de Nomes Piratas 🏴‍☠️" />
+
+    <meta
+      property="og:title"
+      content="Gerador de Nomes Piratas 🏴‍☠️"
+    />
+
     <meta
       property="og:description"
       content="Descubra seu nome pirata único! Mais de 10.000 combinações em PT, EN e ES."
     />
-    <meta property="og:url" content="https://candid-dragon-05e719.netlify.app/" />
-<meta property="og:image" content="https://candid-dragon-05e719.netlify.app/og-image.jpg" />
+
+    <meta
+      property="og:url"
+      content="https://nomespiratas.com.br/"
+    />
+
+    <meta
+      property="og:image"
+      content="https://nomespiratas.com.br/og-image.jpg"
+    />
+
     <meta property="og:locale" content="pt_BR" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Gerador de Nomes Piratas 🏴‍☠️" />
+
+    <meta
+      name="twitter:title"
+      content="Gerador de Nomes Piratas 🏴‍☠️"
+    />
+
     <meta
       name="twitter:description"
       content="Descubra seu nome pirata único!"
@@ -60,22 +69,30 @@ if (window.location.hostname.includes("github.io")) {
         "@type": "WebApplication",
         "name": "Gerador de Nomes Piratas",
         "description": "Gerador gratuito de nomes piratas com mais de 10.000 combinações",
-        "url": "https://candid-dragon-05e719.netlify.app/",
+        "url": "https://nomespiratas.com.br/",
         "applicationCategory": "Entertainment",
         "inLanguage": ["pt-BR", "en", "es"],
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
       }
     </script>
 
     <!-- ══════════════════════════════════════════
        ADSENSE — descomente após aprovação da conta
-       Substitua ca-pub-XXXX pelo seu Publisher ID
-       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
        ══════════════════════════════════════════ -->
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
@@ -83,36 +100,6 @@ if (window.location.hostname.includes("github.io")) {
 
     <link rel="stylesheet" href="style.css" />
   </head>
-
-  <body>
-    <!-- ANÚNCIO TOPO — descomente após aprovação AdSense
-  <div class="ad-wrapper ad-top">
-    <ins class="adsbygoogle" style="display:block"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="1111111111"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-  -->
-
-    <header class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <h1 id="title">🏴‍☠️ Gerador de Nomes Piratas</h1>
-        <p id="subtitle">Descubra seu destino nos Sete Mares</p>
-
-        <select
-          id="language"
-          onchange="changeLang()"
-          aria-label="Selecionar idioma"
-        >
-          <option value="pt">🇧🇷 Português</option>
-          <option value="en">🇺🇸 English</option>
-          <option value="es">🇪🇸 Español</option>
-        </select>
-      </div>
-    </header>
 
     <div class="gender-select" role="group" aria-label="Selecionar gênero">
       <button class="gender-btn active" onclick="setGender('male', this)">
