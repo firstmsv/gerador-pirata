@@ -8,7 +8,7 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**🇧🇷 Português** | [🇺🇸 English](#-pirate-name-generator)
+🇧🇷 Português | 🇺🇸 English
 
 ---
 
@@ -116,11 +116,13 @@ Feito com ⚓ por **Marcelo Vitória**
 
 ---
 
-# 🏴‍☠️ Pirate Name Generator
+# 🏴‍☠️ Gerador de Nomes Piratas
+
+[English Version](#english-version)
 
 <div align="center">
 
-**[🇧🇷 Português](#️-gerador-de-nomes-piratas--pirate-name-generator)** | 🇺🇸 English
+[🇧🇷 Voltar ao Português](#-gerador-de-nomes-piratas--pirate-name-generator) | 🇺🇸 English
 
 ---
 
