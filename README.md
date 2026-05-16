@@ -2,7 +2,6 @@
 
 <div align="center">
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/candid-dragon-05e719/deploy-status)](https://candid-dragon-05e719.netlify.app/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -12,7 +11,7 @@
 
 ---
 
-### 🌐 [Acessar o site ao vivo → candid-dragon-05e719.netlify.app](https://candid-dragon-05e719.netlify.app/)
+### 🌐 [Acessar o site ao vivo → nomespiratas.com.br](https://nomespiratas.com.br/)
 
 </div>
 
@@ -81,14 +80,6 @@ open index.html
 
 > Não é necessário instalar dependências — o projeto roda com HTML, CSS e JavaScript puro!
 
-## ☁️ Deploy no Netlify
-
-Este projeto está hospedado no [Netlify](https://www.netlify.com/). Para fazer seu próprio deploy:
-
-1. Faça um fork deste repositório
-2. Acesse [app.netlify.com](https://app.netlify.com/) e conecte sua conta GitHub
-3. Selecione o repositório e clique em **Deploy Site**
-4. Em segundos seu site estará no ar! 🎉
 
 ## 🤝 Contribuindo
 
@@ -126,7 +117,7 @@ Feito com ⚓ por **Marcelo Vitória**
 
 ---
 
-### 🌐 [Live Site → candid-dragon-05e719.netlify.app](https://candid-dragon-05e719.netlify.app/)
+### 🌐 [Live Site → nomespiratas.com.br](https://nomespiratas.com.br/)
 
 </div>
 
@@ -195,14 +186,6 @@ open index.html
 
 > No dependencies to install — the project runs with pure HTML, CSS, and JavaScript!
 
-## ☁️ Deploy on Netlify
-
-This project is hosted on [Netlify](https://www.netlify.com/). To deploy your own version:
-
-1. Fork this repository
-2. Go to [app.netlify.com](https://app.netlify.com/) and connect your GitHub account
-3. Select the repository and click **Deploy Site**
-4. Your site will be live in seconds! 🎉
 
 ## 🤝 Contributing
 
