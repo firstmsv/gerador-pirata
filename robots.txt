@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://candid-dragon-05e719.netlify.app/sitemap.xml
+Sitemap: Sitemap: https://nomespiratas.com.br/sitemap.xml
