@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: Sitemap: https://nomespiratas.com.br/sitemap.xml
+Sitemap: https://nomespiratas.com.br/sitemap.xml
