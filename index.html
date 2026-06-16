@@ -38,22 +38,71 @@
     <meta name="twitter:description" content="Descubra seu nome pirata único!" />
 
     <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Gerador de Nomes Piratas",
-        "description": "Gerador gratuito de nomes piratas com mais de 27.000 combinações",
-        "url": "https://nomespiratas.com.br/",
-        "applicationCategory": "Entertainment",
-        "inLanguage": ["pt-BR", "en", "es"],
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "BRL"
-        }
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Gerador de Nomes Piratas",
+      "description": "Gerador gratuito de nomes piratas com mais de 27.000 combinações em Português, English e Español.",
+      "url": "https://nomespiratas.com.br/",
+      "applicationCategory": "EntertainmentApplication",
+      "inLanguage": ["pt-BR", "en", "es"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
       }
-    </script>
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Como gerar um nome pirata único?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escolha o gênero, selecione o idioma e clique em Descobrir Meu Nome Pirata. Cada clique gera uma combinação diferente entre mais de 27.000 possibilidades."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O gerador de nomes piratas é gratuito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, 100% gratuito e sem limite de usos. Você pode gerar quantos nomes quiser e salvar favoritos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso usar o nome gerado em jogos e RPG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Com certeza! Os nomes são perfeitos para RPG de mesa, videogames, fanfiction e cosplay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O gerador funciona em outros idiomas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! O gerador funciona em três idiomas: Português, English e Español, com banco de nomes próprio para cada um."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como compartilhar meu nome pirata?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clique no botão Compartilhar para enviar pelo WhatsApp, Instagram, TikTok ou qualquer app. Ou use Copiar para colar onde quiser."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
