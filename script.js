@@ -613,10 +613,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFavorites();
   syncCounter();
 
-  // Atualiza contador a cada 7 segundos (+1 a +4 por tick — realista)
-  setInterval(() => {
-    syncCounter(Math.floor(Math.random() * 4) + 1);
-  }, 7000);
 });
 
 // ══════════════════════════════════════════════════════════
@@ -668,6 +664,7 @@ function changeLang() {
 
 function applyLang() {
   const t = i18n[currentLang];
+  document.documentElement.lang = currentLang === "pt" ? "pt-BR" : currentLang;
   document.getElementById("title").textContent = t.title;
   document.getElementById("subtitle").textContent = t.subtitle;
   document.getElementById("btn-gen-text").textContent = currentName
@@ -749,31 +746,45 @@ function generateName() {
 function generateSuggestions() {
   const db2 = namesDB[currentLang];
   const base = currentGender === "female" ? db2.female : db2.male;
+  const list = document.getElementById("suggestions-list");
   const used = new Set();
-  let html = "";
+  const fragment = document.createDocumentFragment();
+  let attempts = 0;
 
-  while (used.size < 4) {
+  while (used.size < 4 && attempts < 40) {
+    attempts++;
     const name = pick(base) + " " + pick(db2.prefixo) + " " + pick(db2.sufixo);
-    if (!used.has(name)) {
-      used.add(name);
-      html += `<span class="suggestion-item" role="listitem" onclick="useSuggestion('${name.replace(/'/g, "\\'")}')">⚔️ ${name}</span>`;
-    }
+    if (used.has(name)) continue;
+    used.add(name);
+
+    const item = document.createElement("span");
+    item.className = "suggestion-item";
+    item.setAttribute("role", "listitem");
+    item.textContent = "⚔️ " + name;
+    item.addEventListener("click", () => useSuggestion(name));
+    fragment.appendChild(item);
   }
 
-  document.getElementById("suggestions-list").innerHTML = html;
+  list.replaceChildren(fragment);
 }
 
 // ══════════════════════════════════════════════════════════
 //  TYPEWRITER
 // ══════════════════════════════════════════════════════════
+let typeWriterTimer = null;
+
 function typeWriter(text) {
   const el = document.getElementById("result-name");
+  if (typeWriterTimer !== null) clearInterval(typeWriterTimer);
   el.textContent = "";
   let i = 0;
-  const interval = setInterval(() => {
+  typeWriterTimer = setInterval(() => {
     el.textContent += text[i];
     i++;
-    if (i >= text.length) clearInterval(interval);
+    if (i >= text.length) {
+      clearInterval(typeWriterTimer);
+      typeWriterTimer = null;
+    }
   }, 45);
 }
 
@@ -805,13 +816,34 @@ function showToast(msg) {
 // ══════════════════════════════════════════════════════════
 //  AÇÕES
 // ══════════════════════════════════════════════════════════
-function copyName() {
+async function copyName() {
   const t = i18n[currentLang];
   if (!currentName) {
     showToast(t.noName);
     return;
   }
-  navigator.clipboard.writeText(currentName).then(() => showToast(t.copied));
+
+  try {
+    if (!navigator.clipboard || !navigator.clipboard.writeText) {
+      throw new Error("Clipboard API indisponível");
+    }
+    await navigator.clipboard.writeText(currentName);
+    showToast(t.copied);
+  } catch (error) {
+    console.warn("Não foi possível copiar o nome:", error);
+    showToast(currentLang === "en" ? "Could not copy the name." : currentLang === "es" ? "No se pudo copiar el nombre." : "Não foi possível copiar o nome.");
+  }
+}
+
+function readFavorites() {
+  try {
+    const stored = JSON.parse(localStorage.getItem("pirateFav") || "[]");
+    if (!Array.isArray(stored)) return [];
+    return [...new Set(stored.filter((name) => typeof name === "string" && name.trim()).map((name) => name.trim()))].slice(0, 20);
+  } catch (error) {
+    console.warn("Não foi possível ler os favoritos:", error);
+    return [];
+  }
 }
 
 function saveFavorite() {
@@ -821,54 +853,74 @@ function saveFavorite() {
     return;
   }
 
-  let fav = JSON.parse(localStorage.getItem("pirateFav") || "[]");
-  if (fav.includes(currentName)) {
-    showToast(t.favDupe);
-    return;
-  }
+  try {
+    const fav = readFavorites();
+    if (fav.includes(currentName)) {
+      showToast(t.favDupe);
+      return;
+    }
 
-  fav.unshift(currentName);
-  if (fav.length > 20) fav = fav.slice(0, 20); // máx 20 favoritos
-  localStorage.setItem("pirateFav", JSON.stringify(fav));
-  showToast(t.favSaved);
-  renderFavorites();
+    fav.unshift(currentName);
+    localStorage.setItem("pirateFav", JSON.stringify(fav.slice(0, 20)));
+    showToast(t.favSaved);
+    renderFavorites();
+  } catch (error) {
+    console.warn("Não foi possível salvar o favorito:", error);
+    showToast(currentLang === "en" ? "Could not save favorite." : currentLang === "es" ? "No se pudo guardar el favorito." : "Não foi possível salvar o favorito.");
+  }
 }
 
 function clearFavorites() {
-  localStorage.removeItem("pirateFav");
+  try {
+    localStorage.removeItem("pirateFav");
+  } catch (error) {
+    console.warn("Não foi possível limpar os favoritos:", error);
+  }
   renderFavorites();
 }
 
 function renderFavorites() {
-  const fav = JSON.parse(localStorage.getItem("pirateFav") || "[]");
+  const fav = readFavorites();
   const section = document.getElementById("favorites-section");
   const list = document.getElementById("favorites-list");
 
   if (fav.length === 0) {
     section.style.display = "none";
+    list.replaceChildren();
     return;
   }
 
   section.style.display = "block";
-  list.innerHTML = fav
-    .map(
-      (name) =>
-        `<span class="suggestion-item fav-item" role="listitem" onclick="useSuggestion('${name.replace(/'/g, "\\'")}')">⭐ ${name}</span>`,
-    )
-    .join("");
+  const fragment = document.createDocumentFragment();
+  fav.forEach((name) => {
+    const item = document.createElement("span");
+    item.className = "suggestion-item fav-item";
+    item.setAttribute("role", "listitem");
+    item.textContent = "⭐ " + name;
+    item.addEventListener("click", () => useSuggestion(name));
+    fragment.appendChild(item);
+  });
+  list.replaceChildren(fragment);
 }
 
-function shareNative() {
+async function shareNative() {
   const t = i18n[currentLang];
   if (!currentName) {
     showToast(t.noName);
     return;
   }
 
-  if (navigator.share) {
-    navigator.share({ title: t.title, text: currentName, url: location.href });
-  } else {
-    copyName();
+  if (!navigator.share) {
+    await copyName();
+    return;
+  }
+
+  try {
+    await navigator.share({ title: t.title, text: currentName, url: location.href });
+  } catch (error) {
+    if (error && error.name === "AbortError") return;
+    console.warn("Não foi possível compartilhar o nome:", error);
+    showToast(currentLang === "en" ? "Could not share the name." : currentLang === "es" ? "No se pudo compartir el nombre." : "Não foi possível compartilhar o nome.");
   }
 }
 
@@ -881,4 +933,5 @@ function quizAnswer(tipo) {
   currentName = name;
   typeWriter(name);
   document.getElementById("result-title").textContent = "";
+  syncCounter(1);
 }
